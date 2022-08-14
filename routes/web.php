@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*Route::get('/buscar2', function(Request $request){
+    return $request->all();
+});*/
+// http://localhost:8000/buscar2/?query=algo
+
 /**
  * Route::get    | Consultar
  * Route::post   | Guardar
@@ -22,20 +27,23 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/buscar', function(){
-    return "Haciendo una busqueda";
+Route::get('/blog', function(){
+    // Consulta con la BD
+    $posts = [
+        ['id' => 1, 'title' => 'PHP', 'slug' => 'php'],
+        ['id' => 2, 'title' => 'Laravel', 'slug' => 'laravel']
+    ];
+    return view('blog', ['posts' => $posts]);
 });
-// http://localhost:8000/buscar
+// http://localhost:8000/blog
 
-Route::get('/buscar/{param}', function($param){
-    return $param;
-});
-// http://localhost:8000/buscar/heeey
+Route::get('/post/{slug}', function($slug){
+    // Consulta con la BD
+    $post = $slug;
 
-Route::get('/buscar2', function(Request $request){
-    return $request->all();
+    return view('post', ['post' => $post]);
 });
-// http://localhost:8000/buscar2/?query=algo
+// http://localhost:8000/post/PHP
