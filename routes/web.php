@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,24 +27,25 @@ use Illuminate\Support\Facades\Route;
  * Route::put    | Actualizar
  */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+/**
+ * Forma 1 de crear rutas - Creando un grupo de rutas de un controlador
+ * Laravel 9
+ */
+/*
+Route::controller(PageController::class)->group(function(){
+  Route::get('/', 'home')->name('home');
+  Route::get('/blog', 'blog')->name('blog');
+  Route::get('/post/{slug}', 'post')->name('post');
+});
+*/
 
-Route::get('/blog', function(){
-    // Consulta con la BD
-    $posts = [
-        ['id' => 1, 'title' => 'PHP', 'slug' => 'php'],
-        ['id' => 2, 'title' => 'Laravel', 'slug' => 'laravel']
-    ];
-    return view('blog', ['posts' => $posts]);
-})->name('blog');
+/**
+ * Forma 2 de crear rutas llamando a un controlador
+ */
+Route::get('/', [PageController::class, 'home'])->name('home');
+
+Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 // http://localhost:8000/blog
 
-Route::get('/post/{slug}', function($slug){
-    // Consulta con la BD
-    $post = $slug;
-
-    return view('post', ['post' => $post]);
-})->name('post');
+Route::get('/post/{slug}', [PageController::class, 'post'])->name('post');
 // http://localhost:8000/post/PHP
