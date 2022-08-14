@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/blog', function(){
     // Consulta con la BD
@@ -37,7 +37,7 @@ Route::get('/blog', function(){
         ['id' => 2, 'title' => 'Laravel', 'slug' => 'laravel']
     ];
     return view('blog', ['posts' => $posts]);
-});
+})->name('blog');
 // http://localhost:8000/blog
 
 Route::get('/post/{slug}', function($slug){
@@ -45,5 +45,5 @@ Route::get('/post/{slug}', function($slug){
     $post = $slug;
 
     return view('post', ['post' => $post]);
-});
+})->name('post');
 // http://localhost:8000/post/PHP
