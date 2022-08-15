@@ -12,5 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UserSeeder::class);
+        // Laravel 9:  \App\Models\Post::factory(80)->create();
+        factory(App\Models\User::class, 1)->create();
+        factory(App\Models\Post::class, 80)->create();
     }
 }
