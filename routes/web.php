@@ -47,5 +47,5 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 // http://localhost:8000/blog
 
-Route::get('/post/{slug}', [PageController::class, 'post'])->name('post');
+Route::get('/post/{post:slug}', [PageController::class, 'post'])->name('post');
 // http://localhost:8000/post/PHP

@@ -6,6 +6,7 @@
 
     <h2>Página de Post 📖</h2>
     <h3>Detalle del Post:</h3>
-    <p>Titulo: {{ $post }}</p>
+    <p>Titulo: {{ $post->title }}</p>
+    <p>Body: {{ $post->body }}</p>
 
   @endsection
