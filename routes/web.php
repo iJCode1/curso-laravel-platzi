@@ -49,3 +49,7 @@ Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 
 Route::get('/post/{post:slug}', [PageController::class, 'post'])->name('post');
 // http://localhost:8000/post/PHP
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
