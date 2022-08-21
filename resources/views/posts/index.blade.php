@@ -4,7 +4,10 @@
 
 @section('content')
   <div class="container">
-    <h2 class="display-4 mb-4">Listado de publicaciones</h2>
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <h2 class="display-4">Listado de publicaciones</h2>
+      <a class="btn btn-primary h-auto" href="{{ route('createPost') }}">Crear un nuevo Post</a>
+    </div>
     <table class="table">
       <thead>
         <tr>
@@ -20,7 +23,7 @@
             <th scope="row">{{ $post->id }}</th>
             <td>{{ $post->title }}</td>
             <td>
-              <a href="#">Editar</a>
+              <a class="btn btn-warning" href="{{ route('editPost', $post) }}">Editar</a>
             </td>
             <td>
               <form method="Post" action="{{ route('destroy', $post) }}">

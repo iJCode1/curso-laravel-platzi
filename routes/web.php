@@ -57,3 +57,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('posts', [PostController::class, 'index'])->name('posts');
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('destroy');
+Route::get('/posts/create', [PostController::class, 'create'])->name('createPost');
+Route::post('/posts', [PostController::class, 'store'])->name('store');
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('editPost');
+Route::put('/posts/{post}', [PostController::class, 'update'])->name('updatePost');
