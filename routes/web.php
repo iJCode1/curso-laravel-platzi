@@ -56,3 +56,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('posts', [PostController::class, 'index'])->name('posts');
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('destroy');

@@ -22,7 +22,14 @@
             <td>
               <a href="#">Editar</a>
             </td>
-            <td>Eliminar</td>
+            <td>
+              <form method="Post" action="{{ route('destroy', $post) }}">
+                @csrf
+                @method('DELETE')
+
+                <input class="btn btn-danger" type="submit" value="Eliminar" onclick="return confirm('¿Deseas eliminar?')">
+              </form>
+            </td>
           </tr>
           @empty
           <tr class="">
