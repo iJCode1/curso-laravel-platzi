@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
     public function index(){
-      return view('posts.index', ['posts' => Post::latest()->paginate()]);
+      return view('posts.index', ['posts' => Post::latest('id')->paginate()]);
     }
 
     public function create(Post $post){
@@ -31,6 +31,16 @@ class PostController extends Controller
 
     public function edit(Post $post){
       return view('posts.edit', ['post' => $post]);
+    }
+
+    public function update(Request $request, Post $post){
+      // dd($post);
+      $post->title = $title = $request->title;
+      $post->slug = Str::slug($title);
+      $post->body = $request->body;
+      $post->update();
+
+      return redirect()->route('posts');
     }
 
     public function destroy(Post $post){
