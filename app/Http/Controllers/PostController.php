@@ -7,6 +7,7 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -19,14 +20,19 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
+      $request->validate([
+        'title' => 'required',
+        'slug' => ['required', Rule::unique('posts', 'slug')],
+        'body' => 'required',
+      ]);
       $post = new Post;
-      $post->title = $title = $request->title;
-      $post->slug = Str::slug($title);
+      $post->title = $request->title;
+      $post->slug = $request->slug;
       $post->body = $request->body;
       $post->user_id = $request->user()->id;
       $post->save();
 
-      return redirect()->route('editPost', $post);
+      return redirect()->route('posts');
     }
 
     public function edit(Post $post){
@@ -34,9 +40,13 @@ class PostController extends Controller
     }
 
     public function update(Request $request, Post $post){
-      // dd($post);
-      $post->title = $title = $request->title;
-      $post->slug = Str::slug($title);
+      $request->validate([
+        'title' => 'required',
+        'slug' => ['required', Rule::unique('posts', 'slug')->ignore($post->id)],
+        'body' => 'required',
+      ]);
+      $post->title =$request->title;
+      $post->slug = $request->slug;
       $post->body = $request->body;
       $post->update();
 
