@@ -4,9 +4,9 @@
 
   @section('content')
 
-    <h2>Página de Post 📖</h2>
-    <h3>Detalle del Post:</h3>
-    <p>Titulo: {{ $post->title }}</p>
-    <p>Body: {{ $post->body }}</p>
+  <div class="w-75 mx-auto">
+    <h3 class="font-weight-bold" style="font-size: 2.7rem">{{ $post->title }}</h3>
+    <p class="" style="font-size: 2rem">{{ $post->body }}</p>
+  </div>
 
   @endsection
