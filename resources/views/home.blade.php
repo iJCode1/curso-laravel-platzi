@@ -21,6 +21,12 @@
     </div>
 </div> --}}
 {{-- {{dd($posts[0])}} --}}
+<div class="bg-dark rounded p-5 position-relative overflow-hidden">
+  <span class="px-2 p-2 badge badge-pill badge-secondary text-uppercase">Programación</span>
+  <h3 class="px-2 pt-4 text-white">Blog</h3>
+  <p class="px-2 text-white">Proyecto de desarrollo web para profesionales</p>
+  <img style="right: 20px; bottom: 20px; opacity: 0.4;" class="position-absolute" src="{{asset('images/dev.png')}}" alt="Dev" width="280">
+</div>
 <h2 class="mt-4">Contenido técnico</h2>
 
 <div>
