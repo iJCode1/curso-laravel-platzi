@@ -8,7 +8,8 @@ use App\Models\Post;
 class PageController extends Controller
 {
   public function home(){
-    return view('home');
+    $posts = Post::latest('id')->paginate();
+    return view('home', ['posts' => $posts]);
   }
 
   public function blog(){
