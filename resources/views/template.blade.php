@@ -14,12 +14,14 @@
     <nav class="navbar d-flex justify-between align-items-center">
       <ul class="navbar-nav d-flex flex-row align-items-center">
         <li class="nav-item">
-          <a href="{{route('home')}}" class="nav-link">
+          <a href="{{route('home2')}}" class="nav-link">
             <img src="{{asset('images/logo.png')}}" alt="Ir al Home" width="60">
           </a>
         </li>
         <li class="nav-item ml-4">
-          <input class="form-control" type="search" placeholder="Buscar"/>
+          <form action="{{ route('home2') }}" method="GET">
+            <input class="form-control" type="search" placeholder="Buscar" name="search" value="{{ request('search') }}"/>
+          </form>
         </li>
       </ul>
       <ul class="navbar-nav">

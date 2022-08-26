@@ -43,7 +43,7 @@ Route::controller(PageController::class)->group(function(){
 /**
  * Forma 2 de crear rutas llamando a un controlador
  */
-Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/', [PageController::class, 'home'])->name('home2');
 
 Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 // http://localhost:8000/blog
