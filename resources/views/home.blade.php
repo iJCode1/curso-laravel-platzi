@@ -32,13 +32,19 @@
 <div>
   @foreach ($posts as $post)
     <div class="bg-secondary px-4 py-3 mb-3 rounded">
-      <a href="{{route('post', $post)}}">
+      <a class="text-decoration-none" href="{{route('post', $post)}}">
         <div class="post_type d-flex flex-row align-items-center">
           <span class="p-1 badge badge-pill badge-dark">Tutorial</span>
           <p class="my-0 mx-2 text-white">{{$post->created_at->format('d/m/y')}}</p>
         </div>
         <div class="post_body d-flex">
           <h5 class="mt-2 text-white">{{$post->title}}</h5>
+        </div>
+        <div class="d-flex align-items-center">
+          <svg style="width: 20;" xmlns="http://www.w3.org/2000/svg" class="text-white h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+          </svg>
+          <p class="text-white m-0 ml-1">{{ $post->user->name }}</p>
         </div>
       </div>
       </a>
